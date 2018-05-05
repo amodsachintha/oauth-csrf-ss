@@ -1,0 +1,18 @@
+[
+  {
+    "id": "5aedce40f2e1d95327fc114d",
+    "name": "Sexton Obrien",
+    "username": "sobrien",
+    "gender": "male",
+    "email": "sextonobrien@zillacon.com",
+    "password": "5f4dcc3b5aa765d61d8327deb882cf99"
+  },
+  {
+    "id": "5aedce400c106e68b9c304dc",
+    "name": "Butler Garrett",
+    "username": "bgarret",
+    "gender": "male",
+    "email": "butlergarrett@zillacon.com",
+    "password": "5e9d11a14ad1c8dd77e98ef9b53fd1ba"
+  }
+]
