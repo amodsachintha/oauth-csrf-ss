@@ -78,8 +78,8 @@ class FacebookController extends Controller
 
         $_SESSION['fb_access_token'] = (string)$accessToken;
         setcookie('fb_access_token', (string)$accessToken, time() + (86400 * 30), "/");
-        $_SESSION['app_id'] = '161640204541883';
-        $_SESSION['app_secret'] = 'c10ecdbdd1d0dc065cc6bac2e6725d55';
+        $_SESSION['app_id'] = env('FB_APP_ID');
+        $_SESSION['app_secret'] = env('FB_APP_SECRET');
 
 
         return redirect('/logged-in');
