@@ -16,7 +16,7 @@ Route::get('/fbcallback','FacebookController@fbcallback');
 Route::get('/logged-in','FacebookController@getUserDetails');
 Route::get('/post-status','FacebookController@postStatus');
 Route::get('/logout','FacebookController@logout');
-
+Route::post('/login','LocalLogin@index');
 
 
 Route::get('/csrf-main',function (){
@@ -25,11 +25,6 @@ Route::get('/csrf-main',function (){
 Route::get('/csrf2',function (){
     return view('csrf2');
 });
-
-
-
-
-Route::post('/login','LocalLogin@index');
 
 
 Route::post('/submitWithCSRF1','CSRF1@submit');
