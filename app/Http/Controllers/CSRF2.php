@@ -10,9 +10,8 @@ class CSRF2 extends Controller
 
     public static function generateCSRFToken()
     {
-        $csrf_token = strtolower(md5(str_random(32)));
+        $csrf_token = strtolower(md5(base64_encode(openssl_random_pseudo_bytes(30))));
         return $csrf_token;
-
     }
 
     public function submit(Request $request)

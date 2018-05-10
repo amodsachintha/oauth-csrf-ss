@@ -8,7 +8,6 @@
 <body class="container">
 
 <script type="text/javascript">
-
     function getCSRFToken() {
         $.post('/csrftokenendpoint', {
                 'phpsessionid': C('phpsessionid')
@@ -38,7 +37,7 @@
 
             <form action="/submitWithCSRF1" method="POST" id="csrf1_form">
                 <input type="text" name="text1" class="form-control input-sm chat-input" required placeholder="type here.."/>
-                </br>
+                <br>
                 <div class="wrapper" align="center">
                     <input class="btn btn-success" type="submit" value="Submit">
                 </div>

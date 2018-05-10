@@ -13,11 +13,11 @@ class CSRF1 extends Controller
             return $_SESSION['CSRF_TOKEN'];
 
         if($_SESSION['phpsessionid'] = $request['phpsessionid']){
-            $_SESSION['CSRF_TOKEN'] = strtolower(md5(str_random(32)));
+            $_SESSION['CSRF_TOKEN'] = strtolower(md5(base64_encode(openssl_random_pseudo_bytes(30))));
             return $_SESSION['CSRF_TOKEN'];
         }
         else
-            return "CSRF Failure!";
+            return "Session Validation Failure! Are you logged in?";
     }
 
 

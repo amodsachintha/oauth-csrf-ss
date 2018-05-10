@@ -10,14 +10,13 @@
 //phpsessionid is already set, therefore setting csrf token again!
 if (!isset($_COOKIE['csrfTokenCookie'])) {
     $cookie_val = \App\Http\Controllers\CSRF2::generateCSRFToken();
-    setcookie('csrfTokenCookie', $cookie_val, 0, "/");
+    setcookie('csrfTokenCookie', $cookie_val, 0, "/",'oauthtest.lk',true);
 }
 
 echo isset($_COOKIE['csrfTokenCookie']) ? $_COOKIE['csrfTokenCookie'] : "";
 ?>
 
 <script type="text/javascript">
-
     function C(k) {
         return (document.cookie.match('(^|; )' + k + '=([^;]*)') || 0)[2]
     }
@@ -27,11 +26,11 @@ echo isset($_COOKIE['csrfTokenCookie']) ? $_COOKIE['csrfTokenCookie'] : "";
             hvalue = C('csrfTokenCookie');
 
         $("#csrf2_form").on("submit", function () {
-            $(this).append("<input type='hidden' name='" + hname + " ' value=' " + hvalue + " '/><br/>");
+            // $(this).append("<input type='hidden' name='" + hname + " ' value=' " + hvalue + " '/><br/>");
+            $(this).append("<input type='hidden' name='" + hname + " ' value='FALSE_CSRF_TOKEN'/><br/>");
         });
 
     }
-
     window.onload = getCsrfCookie;
 </script>
 

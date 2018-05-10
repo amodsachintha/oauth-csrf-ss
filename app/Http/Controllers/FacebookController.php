@@ -42,6 +42,7 @@ class FacebookController extends Controller
 
         try {
             $accessToken = $helper->getAccessToken();
+//            return var_dump($accessToken);
         } catch (FacebookSDKException $e) {
             echo 'Facebook SDK returned an error: ' . $e->getMessage();
             exit;
@@ -63,7 +64,7 @@ class FacebookController extends Controller
 
         $oAuth2Client = $fb->getOAuth2Client();
         $tokenMetadata = $oAuth2Client->debugToken($accessToken);
-        $tokenMetadata->validateAppId('161640204541883');
+        $tokenMetadata->validateAppId(env('FB_APP_ID'));
         $tokenMetadata->validateExpiration();
 
         if (!$accessToken->isLongLived()) {
@@ -93,7 +94,6 @@ class FacebookController extends Controller
             exit();
         }
 
-
         $fb = new Facebook([
             'app_id' => env('FB_APP_ID'),
             'app_secret' => env('FB_APP_SECRET'),
@@ -114,8 +114,6 @@ class FacebookController extends Controller
             echo "Error";
             exit();
         }
-
-//        $posts = $this->getPostDetails($graph_node->asArray()['posts']);
 
         return view('member')
             ->with('userObject', $user)
@@ -151,10 +149,10 @@ class FacebookController extends Controller
                 '/' . $user_id . '/picture?redirect=0&type=normal',
                 $_SESSION['fb_access_token']
             );
-        } catch (FacebookExceptionsFacebookResponseException $e) {
+        } catch (FacebookResponseException $e) {
             echo 'Graph returned an error: ' . $e->getMessage();
             exit;
-        } catch (FacebookExceptionsFacebookSDKException $e) {
+        } catch (FacebookSDKException $e) {
             echo 'Facebook SDK returned an error: ' . $e->getMessage();
             exit;
         }

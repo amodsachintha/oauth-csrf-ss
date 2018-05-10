@@ -33,3 +33,4 @@ Route::post('/csrftokenendpoint','CSRF1@generateCSRFToken');
 
 
 Route::post('/submitWithCSRF2','CSRF2@submit');
+
